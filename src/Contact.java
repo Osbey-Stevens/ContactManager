@@ -1,30 +1,37 @@
 
-public class Contact{
-    String name;
-    String phoneNumber;
+public class Contact {
+    private String name;
+    private String phoneNumber;
 
-    public Contact(String name, String phoneNumber){
+    public Contact(String name, String phoneNumber) {
         this.name = name;
 //        this.phoneNumber = phoneNumber;
-        if(phoneNumber.length() == 7){
-        this.phoneNumber = insertString(phoneNumber,"-",2);
+        if (phoneNumber.length() == 7) {
+            this.phoneNumber = insertString(phoneNumber, "-", 2);
         }
 
-        if(phoneNumber.length() == 10){
-            phoneNumber = insertString(phoneNumber,"-",2);
-            phoneNumber = insertString(phoneNumber,"-",6);
+        if (phoneNumber.length() == 10) {
+            phoneNumber = insertString(phoneNumber, "-", 2);
+            phoneNumber = insertString(phoneNumber, "-", 6);
             this.phoneNumber = phoneNumber;
-        }else{
+        } else {
             this.phoneNumber = phoneNumber;
         }
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public static String insertString(
             String originalString,
             String stringToBeInserted,
-            int index)
-    {
+            int index) {
 
         // Create a new string
         String newString = originalString.substring(0, index + 1)
