@@ -13,6 +13,7 @@ public class ContactFunctions{
         contacts = new ArrayList<>();
     }
 
+    //Get data function
     public List<String> getData(Path p){
 
         try{
@@ -26,9 +27,13 @@ public class ContactFunctions{
         return contacts;
     }
 
+    //Add contact to Arraylist
     public void addContact(Contact contact) {
         String contactInfo = String.format("\n%s %s", contact.getName(), contact.getPhoneNumber());
         contacts.add(contactInfo);
     }
+
+    //Save function
+
 
 }

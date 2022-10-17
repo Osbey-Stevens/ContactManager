@@ -6,6 +6,9 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         Path contactsFile = Paths.get("data/contacts.txt");
+        ContactFunctions test = new ContactFunctions();
+
+        System.out.println(test.getData(contactsFile));
 
     }
 }
