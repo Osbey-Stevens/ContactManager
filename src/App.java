@@ -54,7 +54,7 @@ public class App {
                 return true;
 //                break;
             case 3:
-                System.out.println("Option 3");
+              ContactFunctions.searchContact(contacts);
                 return true;
 //                break;
             case 4:

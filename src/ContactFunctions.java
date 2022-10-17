@@ -47,6 +47,13 @@ public class ContactFunctions{
         System.out.println("Contact has been added to the list!\n");
     }
 
+    public static  void searchContact(List<String> contacts){
+        Input input = new Input();
+       String savedContact = input.getString("Which contact would you like more info on?");
+        System.out.println(savedContact);
+        System.out.println(contacts);
+    }
+
 
 
 
