@@ -7,9 +7,14 @@ import java.util.List;
 
 public class ContactFunctions{
 
+    private List<String> contacts;
 
-    public static List<String> getData(Path p){
-        List<String> contacts = null;
+    public ContactFunctions(){
+        contacts = new ArrayList<>();
+    }
+
+    public List<String> getData(Path p){
+
         try{
             contacts = Files.readAllLines(p);
 
@@ -20,8 +25,10 @@ public class ContactFunctions{
 
         return contacts;
     }
-    public static void addContact(List<String> contacts, Contact contact) {
+
+    public void addContact(Contact contact) {
         String contactInfo = String.format("\n%s %s", contact.getName(), contact.getPhoneNumber());
         contacts.add(contactInfo);
     }
+
 }
