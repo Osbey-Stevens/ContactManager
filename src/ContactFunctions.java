@@ -31,4 +31,6 @@ public class ContactFunctions{
         contacts.add(contactInfo);
     }
 
+    Contact contact = new Contact();
+
 }
