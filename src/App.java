@@ -58,7 +58,7 @@ public class App {
                 return true;
 //                break;
             case 4:
-                System.out.println("Option 4");
+               ContactFunctions.deleteContact(contacts);
                 return true;
 //                break;
             case 5:

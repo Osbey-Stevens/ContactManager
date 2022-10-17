@@ -67,6 +67,18 @@ public class ContactFunctions{
         scanner.nextLine();
     }
 
+    public static void deleteContact(List<String> contacts){
+        Input input = new Input();
+        String data = input.getString("Which user would you like to delete ? ");
+        List<String> foundData = contacts.stream()
+                .filter(e -> e.contains(data))
+                .collect(Collectors.toList());
+        System.out.println(foundData);
+//       StringBuffer delete = new StringBuffer();
+//        boolean content = contacts.remove(data);
+//        System.out.println("%n has been deleted from contacts!");
+    }
+
 
 
 
