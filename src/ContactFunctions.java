@@ -4,18 +4,23 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ContactFunctions{
 
-    private List<String> contacts;
 
-    public ContactFunctions(){
-        contacts = new ArrayList<>();
+    //View all contacts
+    public static void viewContacts(List<String> contacts){
+        Scanner scanner = new Scanner(System.in);
+
+        contacts.forEach(System.out::println);
+        System.out.println("Press enter to return to the main menu.");
+        scanner.nextLine();
     }
 
     //Get data function
-    public List<String> getData(Path p){
-
+    public static List<String> getData(Path p){
+        List<String> contacts = null;
         try{
             contacts = Files.readAllLines(p);
 
@@ -28,9 +33,18 @@ public class ContactFunctions{
     }
 
     //Add contact to Arraylist
-    public void addContact(Contact contact) {
+    public static void addContact(List<String> contacts) {
+        Input input = new Input();
+
+        String name = input.getString("Enter new contact first and last name: ");
+        String phoneNumber = input.getString("Enter new contact phone number: ");
+
+        Contact contact = new Contact(name,phoneNumber);
+
         String contactInfo = String.format("\n%s %s", contact.getName(), contact.getPhoneNumber());
         contacts.add(contactInfo);
+
+        System.out.println("Contact has been added to the list!\n");
     }
 
 
