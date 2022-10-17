@@ -16,7 +16,7 @@ public class App {
 
         //Start Program loop
         while (userContinue) {
-            userContinue = executeOption(displayOptions(), contacts);
+            userContinue = executeOption(displayOptions(), contacts,contactsFile);
         }
     }
 
@@ -43,7 +43,7 @@ public class App {
         return userInput;
     }
 
-    public static boolean executeOption(int choice, List<String> contacts) {
+    public static boolean executeOption(int choice, List<String> contacts,Path p) {
 
         switch (choice) {
             case 1:
@@ -65,6 +65,7 @@ public class App {
 //                break;
             case 5:
                 System.out.println("Thanks for using our contact manager");
+                ContactFunctions.saveData(contacts,p);
                 return false;
 //                break;
         }

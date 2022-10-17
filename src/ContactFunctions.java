@@ -76,6 +76,14 @@ public class ContactFunctions{
     }
 
 
+    public static void saveData(List<String> contacts, Path p){
+        try{
+            Files.write(p,contacts);
 
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
 }
