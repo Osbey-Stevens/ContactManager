@@ -8,7 +8,9 @@ public class App {
         Path contactsFile = Paths.get("data/contacts.txt");
         ContactFunctions test = new ContactFunctions();
 
-        System.out.println(test.getData(contactsFile));
+//        System.out.println(test.getData(contactsFile));
+        test.getData(contactsFile).forEach(System.out::println);
+
 
     }
 }
