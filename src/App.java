@@ -9,17 +9,18 @@ public class App {
 
         Path contactsFile = Paths.get("data/contacts.txt");
         List<String> contacts = new ArrayList<>();
+        System.out.println(contacts);
 
         contacts = ContactFunctions.getData(contactsFile);
         boolean userContinue = true;
 
         //Start Program loop
-        while (userContinue){
-            userContinue = executeOption(displayOptions(),contacts);
+        while (userContinue) {
+            userContinue = executeOption(displayOptions(), contacts);
         }
     }
 
-    public static int displayOptions(){
+    public static int displayOptions() {
         Scanner scanner = new Scanner(System.in);
 
         int userInput;
@@ -34,7 +35,7 @@ public class App {
                 "Enter your choice: ");
 
         userInput = scanner.nextInt();
-        while(userInput < 0 || userInput > 5){
+        while (userInput < 0 || userInput > 5) {
             System.out.println("You must enter a number between 1-5:");
             userInput = scanner.nextInt();
         }
@@ -42,11 +43,11 @@ public class App {
         return userInput;
     }
 
-    public static boolean executeOption(int choice, List<String> contacts){
+    public static boolean executeOption(int choice, List<String> contacts) {
 
-        switch (choice){
+        switch (choice) {
             case 1:
-               ContactFunctions.viewContacts(contacts);
+                ContactFunctions.viewContacts(contacts);
                 return true;
 //                break;
             case 2:
@@ -54,11 +55,12 @@ public class App {
                 return true;
 //                break;
             case 3:
-              ContactFunctions.searchContact(contacts);
+                ContactFunctions.searchContact(contacts);
                 return true;
 //                break;
             case 4:
-               ContactFunctions.deleteContact(contacts);
+                contacts = ContactFunctions.deleteContact(contacts);
+                System.out.println(contacts);
                 return true;
 //                break;
             case 5:
