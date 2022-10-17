@@ -4,7 +4,9 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ContactFunctions{
 
@@ -48,10 +50,21 @@ public class ContactFunctions{
     }
 
     public static  void searchContact(List<String> contacts){
+        Scanner scanner = new Scanner(System.in);
         Input input = new Input();
+
        String savedContact = input.getString("Which contact would you like more info on?");
-        System.out.println(savedContact);
-        System.out.println(contacts);
+//        System.out.println(savedContact);
+
+        List<String> foundData = contacts.stream()
+                .filter(e -> e.contains(savedContact))
+                .collect(Collectors.toList());
+
+        System.out.println("\nFound contacts:");
+        foundData.forEach(System.out::println);
+
+        System.out.println("Press enter to return to the main menu");
+        scanner.nextLine();
     }
 
 
