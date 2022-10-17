@@ -6,12 +6,17 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+
         Path contactsFile = Paths.get("data/contacts.txt");
-        ContactFunctions test = new ContactFunctions();
+        List<String> contacts = new ArrayList<>();
 
-        executeOption(displayOptions(),test, contactsFile);
+        contacts = ContactFunctions.getData(contactsFile);
+        boolean userContinue = true;
 
-
+        //Start Program loop
+        while (userContinue){
+            userContinue = executeOption(displayOptions(),contacts);
+        }
     }
 
     public static int displayOptions(){
@@ -37,25 +42,31 @@ public class App {
         return userInput;
     }
 
-    public static void executeOption(int choice, ContactFunctions contacts, Path p){
+    public static boolean executeOption(int choice, List<String> contacts){
 
         switch (choice){
             case 1:
-                contacts.getData(p).forEach(System.out::println);
-                break;
+               ContactFunctions.viewContacts(contacts);
+                return true;
+//                break;
             case 2:
-                System.out.println("Option 2");
-                break;
+                ContactFunctions.addContact(contacts);
+                return true;
+//                break;
             case 3:
                 System.out.println("Option 3");
-                break;
+                return true;
+//                break;
             case 4:
                 System.out.println("Option 4");
-                break;
+                return true;
+//                break;
             case 5:
-                System.out.println("Option 5");
-                break;
+                System.out.println("Thanks for using our contact manager");
+                return false;
+//                break;
         }
-
+        System.out.println("Option selection was not processed correctly");
+        return false;
     }
 }
