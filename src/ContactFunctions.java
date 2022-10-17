@@ -33,7 +33,5 @@ public class ContactFunctions{
         contacts.add(contactInfo);
     }
 
-    //Save function
-
 
 }
