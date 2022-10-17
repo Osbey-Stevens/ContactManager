@@ -9,7 +9,7 @@ public class App {
         Path contactsFile = Paths.get("data/contacts.txt");
         ContactFunctions test = new ContactFunctions();
 
-        executeOption(displayOptions());
+        executeOption(displayOptions(),test, contactsFile);
 
 
     }
@@ -37,11 +37,11 @@ public class App {
         return userInput;
     }
 
-    public static void executeOption(int choice){
+    public static void executeOption(int choice, ContactFunctions contacts, Path p){
 
         switch (choice){
             case 1:
-                System.out.println("Option 1");
+                contacts.getData(p).forEach(System.out::println);
                 break;
             case 2:
                 System.out.println("Option 2");
