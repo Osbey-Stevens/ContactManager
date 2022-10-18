@@ -71,7 +71,6 @@ public class ContactFunctions{
         Input input = new Input();
         String data = input.getString("Which user would you like to delete ? ");
         contacts.removeIf(e -> e.contains(data));
-        System.out.println(contacts);
         return contacts;
     }
 
