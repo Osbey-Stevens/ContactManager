@@ -9,7 +9,7 @@ public class App {
 
         Path contactsFile = Paths.get("data/contacts.txt");
         List<String> contacts = new ArrayList<>();
-        System.out.println(contacts);
+
 
         contacts = ContactFunctions.getData(contactsFile);
         boolean userContinue = true;
@@ -60,7 +60,6 @@ public class App {
 //                break;
             case 4:
                 contacts = ContactFunctions.deleteContact(contacts);
-                System.out.println(contacts);
                 return true;
 //                break;
             case 5:
