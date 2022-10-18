@@ -8,25 +8,36 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class ContactFunctions{
+public class ContactFunctions {
 
 
     //View all contacts
-    public static void viewContacts(List<String> contacts){
+    public static void viewContacts(List<String> contacts) {
         Scanner scanner = new Scanner(System.in);
 
-        contacts.forEach(System.out::println);
+        System.out.printf("%-14s | %-14s |\n", "Name", "Phone Number");
+        System.out.printf("---------------------------------\n");
+
+        for(int i=0; i<contacts.size(); i++){
+            if(i%2==0){
+                System.out.printf("%-15s|", contacts.get(i));
+            }else {
+                System.out.printf(" %-15s|\n", contacts.get(i));
+            }
+        }
+        System.out.println("\n");
+
         System.out.println("Press enter to return to the main menu.");
         scanner.nextLine();
     }
 
     //Get data function
-    public static List<String> getData(Path p){
+    public static List<String> getData(Path p) {
         List<String> contacts = null;
-        try{
+        try {
             contacts = Files.readAllLines(p);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -41,19 +52,20 @@ public class ContactFunctions{
         String name = input.getString("Enter new contact first and last name: ");
         String phoneNumber = input.getString("Enter new contact phone number: ");
 
-        Contact contact = new Contact(name,phoneNumber);
+        Contact contact = new Contact(name, phoneNumber);
 
-        String contactInfo = String.format("\n%s %s", contact.getName(), contact.getPhoneNumber());
+        String contactInfo = String.format("%s\n%s", contact.getName(), contact.getPhoneNumber());
         contacts.add(contactInfo);
 
         System.out.println("Contact has been added to the list!\n");
     }
 
-    public static  void searchContact(List<String> contacts){
+    //
+    public static void searchContact(List<String> contacts) {
         Scanner scanner = new Scanner(System.in);
         Input input = new Input();
 
-       String savedContact = input.getString("Which contact would you like more info on?");
+        String savedContact = input.getString("Which contact would you like more info on?");
 //        System.out.println(savedContact);
 
         List<String> foundData = contacts.stream()
@@ -67,22 +79,33 @@ public class ContactFunctions{
         scanner.nextLine();
     }
 
-    public static List<String> deleteContact(List<String> contacts){
+    public static List<String> deleteContact(List<String> contacts) {
         Input input = new Input();
         String data = input.getString("Which user would you like to delete ? ");
-        contacts.removeIf(e -> e.contains(data));
+//        contacts.removeIf(e -> e.contains(data));
+
+        for(int i=0; i < contacts.size(); i++){
+            if(contacts.get(i).contains(data)){
+                contacts.remove(i);
+                contacts.remove(i);
+//                System.out.println(contacts.get(i));
+//                System.out.println(contacts.get(i));
+            }
+        }
+
         return contacts;
     }
 
 
-    public static void saveData(List<String> contacts, Path p){
-        try{
-            Files.write(p,contacts);
+    public static void saveData(List<String> contacts, Path p) {
+        try {
+            Files.write(p, contacts);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
+
 
 }

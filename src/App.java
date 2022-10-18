@@ -32,7 +32,7 @@ public class App {
                 "4 - Delete an existing contact\n" +
                 "5 - Exit\n" +
                 "\n" +
-                "Enter your choice: ");
+                "Enter your choice (1, 2, 3, 4 or 5): ");
 
         userInput = scanner.nextInt();
         while (userInput < 0 || userInput > 5) {
