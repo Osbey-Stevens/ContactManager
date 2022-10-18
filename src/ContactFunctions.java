@@ -60,13 +60,12 @@ public class ContactFunctions {
         System.out.println("Contact has been added to the list!\n");
     }
 
-    //
+    //Search for contact in Arraylist
     public static void searchContact(List<String> contacts) {
         Scanner scanner = new Scanner(System.in);
         Input input = new Input();
 
         String savedContact = input.getString("Which contact would you like more info on?");
-//        System.out.println(savedContact);
 
         List<String> foundData = contacts.stream()
                 .filter(e -> e.contains(savedContact))
@@ -79,6 +78,7 @@ public class ContactFunctions {
         scanner.nextLine();
     }
 
+    //Delete contact from Arraylist
     public static List<String> deleteContact(List<String> contacts) {
         Input input = new Input();
         String data = input.getString("Which user would you like to delete ? ");
@@ -88,15 +88,13 @@ public class ContactFunctions {
             if(contacts.get(i).contains(data)){
                 contacts.remove(i);
                 contacts.remove(i);
-//                System.out.println(contacts.get(i));
-//                System.out.println(contacts.get(i));
             }
         }
 
         return contacts;
     }
 
-
+    //Save data to file
     public static void saveData(List<String> contacts, Path p) {
         try {
             Files.write(p, contacts);
